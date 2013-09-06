@@ -1,0 +1,122 @@
+<div>
+    </string><input type="text" ng-model="filterOptions.filterText" />
+    <div class="gridStyle" ng-grid="gridProdutos"></div>
+    <br/>
+    <br/>
+    <tabset>
+        <tab heading="detalhe do produto">
+            <form class="well">
+                <div class="form_class">
+                     <input type="hidden" name="id" ng-model="selected_produto.0.id"/>
+                     <div class="form_field" style="width:50%">
+                        <div class="fileupload fileupload-new" data-provides="fileupload">
+                            <div class="fileupload-preview thumbnail" style="display:none;"></div>
+                            <div class="thumbnail" style="width: 200px; height: 150px;">
+                                <img id="imagem_container" ng-src="{{selected_produto.0.nome_imagem}}" />
+                            </div>
+                            <div>
+                                <span class="btn btn-file">
+                                    <span class="fileupload-new">Select image</span>
+                                    <span class="fileupload-exists">Change</span>
+                                    <input type="file" ng-file-select="onFileSelect($files)"/>
+                                </span>
+                                <!-- <a href="#" id="rm_imagem" style="display:none;" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a> -->
+                            </div>
+                        </div>
+                    </div>  
+                    <!-- 1ST ROW -->
+                    <div class="form_field" style="width:48%">
+                        <label>Marca</label> 
+                        <input type="text" name="marca" ng-model="selected_produto.0.marca"/>
+                    </div>
+                    <div class="form_field" style="width:48%">
+                        <label>Referência</label> 
+                        <input type="text" name="referencia" ng-model="selected_produto.0.referencia"/>
+                    </div>
+                    <!-- 1ST ROW -->
+                    <div class="form_field" style="width:48%">
+                        <label>Categoria</label> 
+                        <select style="width:100%" ng-model="selected_produto.0.id_categorias" ng-options="item.id as item.descricao for item in categorias" name="id_categorias">
+                            <option value="0">-</option>
+                        </select>
+                    </div>
+                    <div class="form_field" style="width:48%">
+                        <label>Fornecedor</label> 
+                        <select style="width:100%" ng-model="selected_produto.0.id_fornecedores" ng-options="item.id as item.nome for item in fornecedores" name="id_fornecedores">
+                            <option value="0">-</option>
+                        </select>
+                    </div>
+                    <!-- 2ND ROW -->
+                    <div class="form_field" style="width:95%">
+                        <label>Descrição</label> 
+                        <textarea type="text" rows="4" style="width:100%;resize:none;" name="descricao" ng-model="selected_produto.0.descricao"/>
+                    </div>
+                    <!-- 3RD ROW -->
+                    <div class="form_field" style="width:31%">
+                        <label>Cor</label> 
+                        <input type="text" name="cor" ng-model="selected_produto.0.cor"/>
+                    </div>
+                    <div class="form_field" style="width:31%">
+                        <label>Material</label> 
+                        <input type="text" name="material" ng-model="selected_produto.0.material"/>
+                    </div>
+                    <div class="form_field" style="width:31%">
+                        <label>Dimensões</label> 
+                        <input type="text" name="dimensoes" ng-model="selected_produto.0.dimensoes"/>
+                    </div>
+                    <!-- 4TH ROW -->
+                    <div class="form_field" style="width:31%">
+                        <label>Stock Total</label> 
+                        <input style="width:60%;" type="text" name="stock_total" ng-model="selected_produto.0.stock_total"/>
+                    </div>
+                    <div class="form_field" style="width:31%">
+                        <label>Reservado</label> 
+                        <input style="width:60%;" type="text" name="stock_reservado" ng-model="selected_produto.0.stock_reservado"/>
+                    </div>
+                    <div class="form_field" style="width:31%">
+                        <label>Saída</label> 
+                        <input style="width:60%;" type="text" name="stock_saida" ng-model="selected_produto.0.stock_saida"/>
+                        <input style="width:25%;" type="text" value="(disp.) {{selected_produto.0.stock_total - (selected_produto.0.stock_reservado + selected_produto.0.stock_saida)}}" readonly/></input>
+                    </div>
+                    <!-- 5TH ROW -->
+                    <div class="form_field" style="width:31%">
+                        <label>Preço Base</label> 
+                        <input style="width:60%;" type="text" name="preco_base" ng-model="selected_produto.0.preco_base"/> 
+                        <input style="width:25%;" type="text" value="{{(selected_produto.0.preco_base * 1.23).toFixed(2)}} c/ IVA" readonly/></input>
+                    </div>
+                    <div class="form_field" style="width:31%">
+                        <label>Preço Transporte</label> 
+                        <input style="width:60%;" type="text" name="preco_transporte" ng-model="selected_produto.0.preco_transporte"/>
+                    </div>
+                    <div class="form_field" style="width:31%">
+                        <label>Preço PVP</label> 
+                        <input style="width:60%;" type="text" name="preco_pvp" ng-model="selected_produto.0.preco_pvp"/>
+                        <input style="width:25%;" type="text" value="{{(selected_produto.0.preco_pvp * 1.23).toFixed(2)}} c/ IVA" readonly/></input>
+                    </div>
+<!--                     <div class="table_col_in_one">
+                        <label>Foto</label> 
+                        <input type="text" ng-model="selected_produto.0.nome_imagem"/>
+                        <input type="file" ng-file-select="onFileSelect($files)" />
+                    </div> -->
+                </div>
+                <br/>
+
+                <button class="btn btn-primary btn_apagar" ng-click="openDeleteBox()">Apagar</button>
+                <button style="margin-top:2%;"class="btn btn-primary" ng-click="openSaveBox()">Gravar</button>
+            </form>
+        </tab>
+        <tab heading="encomendas ({{ filtered_encomendas.length }})">
+            <br/> 
+            <div class="gridStyle" ng-grid="gridEncomendas"></div>
+            <br/>
+        </tab>
+        <tab heading="obras ({{ filtered_obras.length }})">
+            <br/> 
+            <div class="gridStyle" ng-grid="gridObras"></div>
+            <br/>
+        </tab>
+<!--         <tab heading="{{ (selected_produto.0.nome_imagem) }}">
+            <img ng-src="{{selected_produto.0.nome_imagem}}" style="height:25%;width:25%;"/>
+        </tab> -->
+    </tabset>
+</div>

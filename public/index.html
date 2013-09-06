@@ -1,0 +1,149 @@
+﻿<!doctype html>
+<html ng-app="myApp">
+  <head>
+    <title>Atelier Catherine Cabral</title>
+
+    <!-- jQuery, Angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js" type="text/javascript"></script>
+
+    <!-- Bootstrap -->
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet"/>    
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+    <!--<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js" type="text/javascript" >
+    </script>-->
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.5.0.js"></script>
+    <script src="js/lib/bootstrap.min.js" type="text/javascript"></script>
+
+    <script src="js/lib/angular-strap.min.js" type="text/javascript"></script>
+
+    <!-- ng-grid -->
+    <link href="css/ng-grid.min.css" rel="stylesheet" type="text/css"/>
+    <script src="js/lib/ng-grid.min.js" type="text/javascript"></script>
+    <!--<script type="text/javascript" src="http://angular-ui.github.com/ng-grid/lib/ng-grid.debug.js"></script>-->   
+
+    <!-- file upload -->
+    <link href="css/bootstrap-fileupload.min.css" rel="stylesheet" type="text/css"/>
+    <script src="js/lib/bootstrap-fileupload.min.js" type="text/javascript"></script>  
+
+    <script src="js/lib/angular-file-upload.min.js" type="text/javascript"></script>  
+
+    <!-- AtelierStore app -->
+    <link href="css/app.css" rel="stylesheet" type="text/css"/>
+    <script src="app.js" type="text/javascript"></script>
+    <script src="js/object/fornecedor.js" type="text/javascript"></script>
+    <script src="js/controller/fornecedores_controller.js" type="text/javascript"></script>
+    <script src="js/object/encomenda.js" type="text/javascript"></script>
+    <script src="js/controller/encomendas_controller.js" type="text/javascript"></script>
+    <script src="js/object/obra.js" type="text/javascript"></script>
+    <script src="js/controller/obras_controller.js" type="text/javascript"></script>
+    <script src="js/object/produto.js" type="text/javascript"></script>
+    <script src="js/controller/produtos_controller.js" type="text/javascript"></script>
+    <script src="js/object/cliente.js" type="text/javascript"></script>
+    <script src="js/controller/clientes_controller.js" type="text/javascript"></script>
+
+    <script src="js/object/categoria.js" type="text/javascript"></script>
+    <script src="js/object/obras_produtos.js" type="text/javascript"></script>
+    <script src="js/object/encomendas_produtos.js" type="text/javascript"></script>
+    <script src="js/object/valores_obra.js" type="text/javascript"></script>
+    <script src="js/controller/users_controller.js" type="text/javascript"></script>    
+    <script src="js/controller/alert_controller.js" type="text/javascript"></script>
+    
+    <style>
+        #navcontainer ul
+        {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        #navcontainer ul li { display: inline; }
+
+        #navcontainer ul li a
+        {
+            font-size: 18px;
+            text-decoration: none;
+            padding: .2em 1em;
+            color: #0088cc;
+            border-radius:4px;
+            padding:4px 6px;
+        }
+
+        #navcontainer ul li a:hover
+        {
+            font-weight: bolder;
+        }
+
+        .gridStyle {
+            border: 1px solid rgb(212,212,212);
+            height:200px;
+        }
+    </style>
+        <script type="text/javascript">
+        $(document).ready(function () {
+            //console.log('ppp'+this.location.pathname);
+            //$('a[href="' + this.location.pathname + '"]').parent().addClass('active');
+            document.getElementById('users').addEventListener('click',menu_click,false);
+            document.getElementById('produtos').addEventListener('click',menu_click,false);
+            document.getElementById('encomendas').addEventListener('click',menu_click,false);
+            document.getElementById('obras').addEventListener('click',menu_click,false);
+            document.getElementById('fornecedores').addEventListener('click',menu_click,false);
+            document.getElementById('clientes').addEventListener('click',menu_click,false);
+            function menu_click()
+            {
+                //alert($(this).html());
+                $('#users').children("a").first().css({'font-weight' : 'normal','background-color':'white','color':'lightblue'});
+                $('#produtos').children("a").first().css({'font-weight' : 'normal','background-color':'white','color':'lightblue'});
+                $('#encomendas').children("a").first().css({'font-weight' : 'normal','background-color':'white','color':'lightblue'});
+                $('#obras').children("a").first().css({'font-weight' : 'normal','background-color':'white','color':'lightblue'});
+                $('#fornecedores').children("a").first().css({'font-weight' : 'normal','background-color':'white','color':'lightblue'});
+                $('#clientes').children("a").first().css({'font-weight' : 'normal','background-color':'white','color':'lightblue'});
+
+                $(this).children("a").first().css({'font-weight':'bolder','background-color':'lightblue','color':'white'});
+                
+            }
+            $('#users').children("a").first().css({'font-weight':'normal','background-color':'white','color':'lightblue'});
+            $('#encomendas').children("a").first().css({'font-weight' : 'normal','background-color':'white','color':'lightblue'});
+            $('#obras').children("a").first().css({'font-weight' : 'normal','background-color':'white','color':'lightblue'});
+            $('#fornecedores').children("a").first().css({'font-weight' : 'normal','background-color':'white','color':'lightblue'});
+            $('#clientes').children("a").first().css({'font-weight' : 'normal','background-color':'white','color':'lightblue'});
+            $('#produtos').children("a").first().css({'font-weight' : 'bolder','background-color':'lightblue','color':'white'});
+        });
+    </script>
+  </head>
+
+  <body>
+    <!-- 
+        bootstrap fluid layout
+        (12 columns: span 10, offset 1 centers the content and adds a margin on each side)
+    -->
+
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <h1 class="well" >
+                    <a href="index.html">Atelier Catherine Cabral</a>
+                </h1>
+                <div id="navcontainer">
+                    <ul>
+                        <li id="users"><a href="/users">utilizadores</a></li>
+                        <li id="produtos" ><a href="/produtos">produtos</a></li>
+                        <li id="encomendas"><a href="/encomendas">encomendas</a></li>
+                        <li id="obras"><a href="/obras">obras</a></li>
+                        <li id="fornecedores"><a href="/fornecedores">fornecedores</a></li>
+                        <li id="clientes"><a href="/clientes">clientes</a></li>
+                    </ul>
+                </div>
+
+                <div ng-controller='alertController'>
+                    <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+                    <div ng-view></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  </body>
+</html>

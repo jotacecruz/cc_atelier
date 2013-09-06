@@ -1,0 +1,129 @@
+<div>
+    </string><input type="text" ng-model="filterOptions.filterText" />
+    <div class="gridStyle" ng-grid="gridObras"></div>
+    <br/>
+    <br/>
+    <tabset>
+        <tab heading="detalhe da obra">
+            <form class="well">
+                <div class="form_class">
+                     <input type="hidden" name="id" ng-model="selected_obra.0.id"/>  
+                    <!-- 1ST ROW -->
+                    <div class="form_field" style="width:60%">
+                        <label>Nome</label> 
+                        <input type="text" name="nome" ng-model="selected_obra.0.nome"/>
+                    </div>
+                    <div class="form_field" style="width:33%">
+                        <label>Cliente</label> 
+                        <select style="width:100%" ng-model="selected_obra.0.id_clientes" ng-options="item.id as item.nome for item in clientes" name="id_clientes">
+                            <option value="0">-</option>
+                        </select>
+                    </div>
+                    <!-- -->
+                    <div class="form_field" style="width:52%">
+                        <label>Morada</label> 
+                        <input type="text" name="morada" ng-model="selected_obra.0.morada"/>
+                    </div>
+                    <div class="form_field" style="width:20%">
+                        <label>Código Postal</label> 
+                        <input type="text" name="codigo_postal" ng-model="selected_obra.0.codigo_postal"/>
+                    </div>
+                    <div class="form_field" style="width:20%">
+                        <label>Localidade</label> 
+                        <input type="text" name="localidade" ng-model="selected_obra.0.localidade"/>
+                    </div>
+            		<!-- -->
+                    <div class="form_field" style="width:31%">
+                        <label>Proposta de Honorários</label> 
+                        <input type="text" name="proposta" ng-model="selected_obra.0.proposta"/>
+                    </div>
+                    <div class="form_field" style="width:31%">
+                        <label>Orçamento</label> 
+                        <input type="text" name="orcamento" ng-model="selected_obra.0.orcamento"/>
+                    </div>
+                    <div class="form_field" style="width:31%">
+                        <label>Data Orçamento</label> 
+                        <input type="text" datepicker-popup="yyyy-MM-dd" name="data_orcamento" ng-model="selected_obra.0.data_orcamento" />
+                    </div>
+                    <!-- -->
+                    <div class="form_field" style="width:31%">
+                        <label>Adjudicado</label> 
+                        <input type="text" name="adjudicado" ng-model="selected_obra.0.adjudicado"/>
+                    </div>
+                    <div class="form_field" style="width:31%">
+                        <label>Data Adjudicação</label> 
+                        <input type="text" datepicker-popup="yyyy-MM-dd" name="data_adjudicado" ng-model="selected_obra.0.data_adjudicado" />
+                    </div>
+                    <div class="form_field" style="width:31%">
+                        <label>Pagamento</label> 
+                        <input type="text" name="adjudicado_pagamento" ng-model="selected_obra.0.adjudicado_pagamento"/>
+                    </div>
+            		<!-- -->
+                    <div class="form_field" style="width:95%">
+                        <label>Observações</label>
+                        <textarea type="text" rows="4" style="width:100%;resize:none;" name="observacoes" ng-model="selected_obra.0.observacoes"/>
+                    </div>
+                </div>
+                <br/>
+
+                <button class="btn btn-primary btn_apagar" ng-click="openDeleteBox()">Apagar</button>
+                <button style="margin-top:2%;"class="btn btn-primary" ng-click="openSaveBox()">Gravar</button>
+            </form>
+        </tab>
+        <tab heading="produtos ({{ filtered_produtos_obra.length }})">
+            <div style="display:inline-block;width:100%;">
+                Adicionar produto...
+                </string><input type="text" style="width:20%;" ng-model="filterProdutos.filterText" />
+                <button style="margin-bottom:10px;" class="btn btn-primary" ng-click="addProdutoBox()">Adicionar</button>
+                <button style="margin-bottom:10px;" class="btn btn-primary" ng-click="removeProdutoBox()">Remover</button>
+            </div>
+            <div style="height:95px;" ng-grid="gridProdutos"></div>
+            <br/> 
+            <div class="gridStyle" style="margin-top:20px" ng-grid="gridProdutosObra"></div>
+            <br/>
+        </tab>
+        <tab heading="honorarios">
+            <br/> 
+            <div class="form_field" style="width:31%">
+                <label>Proposta de Honorários</label> 
+                <input type="text" name="proposta" ng-model="selected_obra.0.proposta"/>
+            </div>
+            <button style="margin-top:2%;"class="btn btn-primary" ng-click="addHonorario()">Novo</button>
+            <br/> 
+            <div class="gridStyle" style="margin-top:5%" ng-grid="gridHonorarios"></div>
+            <br/>
+        </tab>
+        <tab heading="contas correntes/orçamentos">
+            <br/>
+            <!-- -->            
+            <div class="form_field" style="width:31%">
+                <label>Orçamento</label> 
+                <input type="text" name="orcamento" ng-model="selected_obra.0.orcamento"/>
+            </div>
+            <div class="form_field" style="width:31%">
+                <label>Data Orçamento</label> 
+                <input type="text" datepicker-popup="yyyy-MM-dd" name="data_orcamento" ng-model="selected_obra.0.data_orcamento" />
+            </div>
+            <div class="form_field" style="width:31%">
+                <label style="width:90%"></label> 
+            </div>
+            <!-- -->
+            <div class="form_field" style="width:31%">
+                <label>Adjudicado</label> 
+                <input type="text" name="adjudicado" ng-model="selected_obra.0.adjudicado"/>
+            </div>
+            <div class="form_field" style="width:31%">
+                <label>Data Adjudicação</label> 
+                <input type="text" datepicker-popup="yyyy-MM-dd" name="data_adjudicado" ng-model="selected_obra.0.data_adjudicado" />
+            </div>
+            <div class="form_field" style="width:31%">
+                <label>Pagamento</label> 
+                <input type="text" name="adjudicado_pagamento" ng-model="selected_obra.0.adjudicado_pagamento"/>
+            </div>         
+            <div class="gridStyle" style="margin-top:12%" ng-grid="gridContasCorrentes"></div>
+            <div><label>Orçamentos</label></div>
+            <div class="gridStyle" style="margin-top:2%" ng-grid="gridOrcamentos"></div>
+            <br/>
+        </tab>
+    </tabset> 
+</div>

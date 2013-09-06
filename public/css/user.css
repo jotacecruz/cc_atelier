@@ -1,0 +1,53 @@
+.button_as_link {
+    background:none!important;
+    border:none; 
+    padding:0!important;
+    /*border is optional*/
+    /*border-bottom:1px solid #444; */
+    /*optional*/
+    font-family:arial,sans-serif; /*input has OS specific font-family*/
+    color:#069;
+    text-decoration:underline;
+    cursor:pointer;
+}
+
+.row0{
+  color:red;
+}
+
+.row1{
+  color:blue;
+}
+
+.row2{
+  color:green;
+}
+
+.table_3_cols div input, div select{
+  /**width:90%;*/
+  float:left;
+  display:block;
+}
+
+
+.form_class{
+  padding-top:10px;
+  width:100%;
+  margin:0 auto;
+  clear:both;
+}
+.form_field {
+  float:left;
+  display:block;
+  margin:0 1% 0 1%;
+}
+
+input[type="text"]{
+  width:90%;
+}
+
+.btn_apagar{
+  margin-left:80%;
+  margin-right:20px;
+  margin-top:2%;
+}

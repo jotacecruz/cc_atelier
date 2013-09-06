@@ -1,0 +1,33 @@
+﻿<div>
+    <form class="well">
+        <div class="table_3_cols">
+            <div ng-repeat="(key, data) in products_fields(products.0)" >            
+                <label class="row{{$index%3}}">{{key}}</label> 
+                <input class="row{{$index%3}}" type="text" name="key" ng-model="newproduct[key]"/>
+            </div>
+        </div>
+        <br/>
+        <input type="hidden" ng-model="newproduct.id" />
+        <input  type="button" value="Save" ng-click="save()" class="btn btn-primary"/>
+    </form>
+
+    <table class="table table-striped table-bordered">
+        <thead> 
+        <tr>            
+            <th ng-repeat="(key, data) in products_fields(products.0)">{{key}}</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="product in products">
+            <td ng-repeat="(key, data) in products_fields(product)">
+                {{data}}
+            </td>
+            <td>
+                <input type="button" class="button_as_link" value="edit" ng-click="edit(product.id)"/> | 
+                <input type="button" class="button_as_link" value="delete" ng-click="delete(product.id)"/>
+            </td>
+         </tr>
+        </tbody>
+    </table>    
+</div>

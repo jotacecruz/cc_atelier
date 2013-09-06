@@ -1,0 +1,82 @@
+<div>
+	</string><input type="text" ng-model="filterOptions.filterText" />
+    <div class="gridStyle" ng-grid="gridEncomendas"></div>
+    <br/>
+	<br/>
+    <tabset>
+        <tab heading="detalhe da encomenda">
+        	<form class="well">
+                <div class="form_class">
+                     <input type="hidden" name="id" ng-model="selected_encomenda.0.id"/>  
+                    <!-- 1ST ROW -->
+                    <div class="form_field" style="width:31%">
+                        <label>Número</label> 
+                        <input type="text" name="numero" ng-model="selected_encomenda.0.numero"/>
+                    </div>
+                    <div class="form_field" style="width:31%">
+                        <label>Data</label> 
+                        <input type="text" datepicker-popup="yyyy-MM-dd" name="data" ng-model="selected_encomenda.0.data" />
+                    </div>
+                    <div class="form_field" style="width:31%">
+                        <label>Estado</label> 
+                        <input type="text" name="estado" ng-model="selected_encomenda.0.estado"/>
+                    </div>
+            		<!-- -->
+                    <div class="form_field" style="width:33%">
+        	            <label>Fornecedor</label> 
+        	            <select style="width:100%" ng-model="selected_encomenda.0.id_fornecedores" ng-options="item.id as item.nome for item in fornecedores" name="id_fornecedores">
+        	                <option value="0">-</option>
+        	            </select>
+        	        </div>
+                    <div class="form_field" style="width:52%">
+        	            <label>Morada</label> 
+        <!-- 	            <select ng-model="selected_encomenda.0.id_categorias" ng-options="item.id as item.descricao for item in categorias" name="id_categorias">
+        	                <option value="0">-</option>
+        	            </select> -->
+        	        </div>
+                    <!-- -->
+                    <div class="form_field" style="width:95%">
+                        <label>Observações</label>
+                        <textarea type="text" rows="4" style="width:100%;resize:none;" name="observacoes" ng-model="selected_encomenda.0.observacoes"/>
+                    </div>
+            		<!-- -->
+                    <div class="form_field" style="width:31%">
+                        <label>Número da Factura</label> 
+                        <input type="text" name="numero_factura" ng-model="selected_encomenda.0.numero_factura"/>
+                    </div>
+                    <div class="form_field" style="width:31%">
+                        <label>Data da Factura</label> 
+                        <input type="text" datepicker-popup="yyyy-MM-dd" name="data_factura" ng-model="selected_encomenda.0.data_factura" />
+                    </div>
+                    <div class="form_field" style="width:31%">
+                        <label>Valor</label> 
+                        <input type="text" name="valor" ng-model="selected_encomenda.0.valor"/>
+                    </div>
+            		<!-- -->
+                    <div class="form_field" style="width:31%">
+                        <label>Forma de Pagamento</label> 
+                        <input type="text" name="forma_pagamento" ng-model="selected_encomenda.0.forma_pagamento"/>
+                    </div>
+                    <div class="form_field" style="width:31%">
+                        <label>Data do Pagamento</label> 
+                        <input type="text" datepicker-popup="yyyy-MM-dd" name="data_pagamento" ng-model="selected_encomenda.0.data_pagamento" />
+                    </div>
+                    <div class="form_field" style="width:31%">
+                        <label>Pago</label> 
+                        <input type="checkbox" style="float:left;" name="pago" ng-model="selected_encomenda.0.pago"/>
+                    </div>
+
+                </div>
+                <br/>
+
+                <button class="btn btn-primary btn_apagar" ng-click="openDeleteBox()">Apagar</button>
+                <button style="margin-top:2%;"class="btn btn-primary" ng-click="openSaveBox()">Gravar</button>
+            </form>
+        </tab>
+        <tab heading="produtos ({{ filtered_produtos.length }})">
+            <br/>
+            <div class="gridStyle" ng-grid="gridProdutos"></div>
+            <br/> 
+        </tab>
+    </tabset>
+</div>

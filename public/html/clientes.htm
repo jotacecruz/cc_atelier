@@ -1,0 +1,55 @@
+<div>
+	</string><input type="text" ng-model="filterOptions.filterText" />
+	<div class="gridStyle" ng-grid="gridClientes"></div>
+	<br/>
+	<br/>
+    <tabset>
+        <tab heading="detalhe do fornecedor">
+            <form class="well">
+                <div class="form_class">
+                     <input type="hidden" name="id" ng-model="selected_cliente.0.id"/>  
+                    <!-- 1ST ROW -->
+                    <div class="form_field" style="width:50%">
+                        <label>Nome</label> 
+                        <input type="text" name="nome" ng-model="selected_cliente.0.nome"/>
+                    </div>
+                    <div class="form_field" style="width:20%">
+                        <label>Contacto</label> 
+                        <input type="text" name="contacto" ng-model="selected_cliente.0.contacto"/>
+                    </div>
+                    <!-- -->
+                    <div class="form_field" style="width:50%">
+                        <label>Morada</label> 
+                        <input type="text" name="morada" ng-model="selected_cliente.0.morada"/>
+                    </div>
+                    <div class="form_field" style="width:20%">
+                        <label>Código Postal</label> 
+                        <input type="text" name="codigo_postal" ng-model="selected_cliente.0.codigo_postal"/>
+                    </div>
+                    <div class="form_field" style="width:20%">
+                        <label>Cidade</label> 
+                        <input type="text" name="cidade" ng-model="selected_cliente.0.cidade"/>
+                    </div>
+            		<!-- -->
+                    <div class="form_field" style="width:50%">
+                        <label>Email</label> 
+                        <input type="text" name="email" ng-model="selected_cliente.0.email"/>
+                    </div>
+                    <div class="form_field" style="width:20%">
+                        <label>Nif</label> 
+                        <input type="text" name="nif" ng-model="selected_cliente.0.nif"/>
+                    </div>
+                </div>
+                <br/>
+
+                <button class="btn btn-primary btn_apagar" ng-click="openDeleteBox()">Apagar</button>
+                <button style="margin-top:2%;"class="btn btn-primary" ng-click="openSaveBox()">Gravar</button>
+            </form>
+        </tab>
+        <tab heading="obras ({{ filtered_obras.length }})">
+            <br/> 
+            <div class="gridStyle" ng-grid="gridObras"></div>
+            <br/>
+        </tab>
+    </tabset>
+</div>

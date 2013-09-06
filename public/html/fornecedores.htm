@@ -1,0 +1,107 @@
+<div>
+	</string><input type="text" ng-model="filterOptions.filterText" />
+	<div class="gridStyle" ng-grid="gridFornecedores"></div>
+    <br/>
+    <br/>
+    <tabset>
+        <tab heading="detalhe do fornecedor">
+        	<form class="well">
+                <div class="form_class">
+                     <input type="hidden" name="id" ng-model="selected_fornecedor.0.id"/>  
+                    <!-- 1ST ROW -->
+                    <div class="form_field" style="width:20%">
+                        <label>Tipo</label> 
+                        <input type="text" name="tipo" ng-model="selected_fornecedor.0.tipo"/>
+                    </div>                    
+                    <div class="form_field" style="width:30%">
+                        <label>Nome</label> 
+                        <input type="text" name="nome" ng-model="selected_fornecedor.0.nome"/>
+                    </div>
+                    <div class="form_field" style="width:20%">
+                        <label>Comercial</label> 
+                        <input type="text" name="comercial" ng-model="selected_fornecedor.0.comercial"/>
+                    </div>
+                    <div class="form_field" style="width:20%">
+                        <label>Contacto Fixo</label> 
+                        <input type="text" name="contacto_fixo" ng-model="selected_fornecedor.0.contacto_fixo"/>
+                    </div>
+            		<!-- -->
+                    <div class="form_field" style="width:20%">
+                        <label>Contacto (1)</label> 
+                        <input type="text" name="contacto1" ng-model="selected_fornecedor.0.contacto1"/>
+                    </div>
+                    <div class="form_field" style="width:52%">
+                        <label>Descrição (1)</label> 
+                        <input type="text"  name="descricao1" ng-model="selected_fornecedor.0.descricao1"/>
+                    </div>
+                    <div class="form_field" style="width:20%">
+                        <label>Email (1)</label> 
+                        <input type="text" name="email1" ng-model="selected_fornecedor.0.email1"/>
+                    </div>
+            		<!-- -->
+                    <div class="form_field" style="width:20%">
+                        <label>Contacto (2)</label> 
+                        <input type="text" name="contacto2" ng-model="selected_fornecedor.0.contacto2"/>
+                    </div>
+                    <div class="form_field" style="width:52%">
+                        <label>Descrição (2)</label> 
+                        <input type="text" name="descricao2" ng-model="selected_fornecedor.0.descricao2"/>
+                    </div>
+                    <div class="form_field" style="width:20%">
+                        <label>Email (2)</label> 
+                        <input type="text" name="email2" ng-model="selected_fornecedor.0.email2"/>
+                    </div>
+                    <!-- -->
+                    <div class="form_field" style="width:52%">
+                        <label>Morada</label> 
+                        <input type="text" name="morada" ng-model="selected_fornecedor.0.morada"/>
+                    </div>
+                    <div class="form_field" style="width:20%">
+                        <label>Código Postal</label> 
+                        <input type="text" name="codigo_postal" ng-model="selected_fornecedor.0.codigo_postal"/>
+                    </div>
+                    <div class="form_field" style="width:20%">
+                        <label>Cidade</label> 
+                        <input type="text" name="cidade" ng-model="selected_fornecedor.0.cidade"/>
+                    </div>
+                    <!-- -->
+                    <div class="form_field" style="width:20%">
+                        <label>NIF</label> 
+                        <input type="text" name="nif" ng-model="selected_fornecedor.0.nif"/>
+                    </div>
+                    <div class="form_field" style="width:37%">
+                        <label>SWIFT</label> 
+                        <input type="text" name="swift" ng-model="selected_fornecedor.0.swift"/>
+                    </div>
+                    <div class="form_field" style="width:37%">
+                        <label>IBAN</label> 
+                        <input type="text" name="iban" ng-model="selected_fornecedor.0.iban"/>
+                    </div>
+            		<!-- -->
+                    <div class="form_field" style="width:48%">
+                        <label>NIB (1)</label> 
+                        <input type="text" name="nib1" ng-model="selected_fornecedor.0.nib1"/>
+                    </div>
+                    <div class="form_field" style="width:48%">
+                        <label>NIB (2)</label> 
+                        <input type="text" name="nib2" ng-model="selected_fornecedor.0.nib2"/>
+                    </div>
+                    <!-- -->
+                    <div class="form_field" style="width:95%">
+                        <label>Observações</label> 
+                        <textarea type="text" rows="4" style="width:100%;resize:none;" name="observacoes" ng-model="selected_fornecedor.0.observacoes"/>
+                    </div>
+                </div>
+                <br/>
+
+                <button class="btn btn-primary btn_apagar" ng-click="openDeleteBox()">Apagar</button>
+                <button style="margin-top:2%;"class="btn btn-primary" ng-click="openSaveBox()">Gravar</button>
+            </form>
+        </tab>
+        <tab heading="encomendas ({{ filtered_encomendas.length }})">
+            <br/> 
+            <div class="gridStyle" ng-grid="gridEncomendas"></div>
+            <br/>
+        </tab>
+    </tabset>
+</div>

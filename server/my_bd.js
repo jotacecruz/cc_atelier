@@ -3,10 +3,10 @@
 Bookshelf.Initialize({
     client: 'mysql',
     connection: {
-        host: 'catherinecabral.com',
+        host: 'myhost.com',
         user: 'cathe',
-        password: 'cabral2012',
-        database: 'cathe_shop'
+        password: 'username',
+        database: 'password'
         //charset: 'utf8'
     }
 });
